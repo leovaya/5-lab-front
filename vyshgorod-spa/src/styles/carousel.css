@@ -1,0 +1,115 @@
+/* === Карусель зображень === */
+
+.carousel-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 30px auto;
+    position: relative;
+    overflow: hidden; 
+}
+
+.carousel-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+    width: 600%; /* ГАРАНТОВАНО 6 СЛАЙДІВ У РЯД */
+}
+
+.carousel-slide {
+    width: calc(100% / 6); 
+    flex-shrink: 0; 
+    
+    height: 40vh; 
+    max-height: 400px; 
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* КЛЮЧОВЕ ВИПРАВЛЕННЯ: ЗАМІНА cover НА contain */
+.carousel-slide img {
+    width: 100%;
+    height: 100%;
+    /* Якщо зображення обрізані по краях, це означає, що вони не вміщаються. 
+       object-fit: contain гарантує, що вся картинка буде видима, додаючи поля. 
+       Якщо ви хочете, щоб вона заповнила весь простір, але БЕЗ ОБРІЗАННЯ, 
+       тоді ваші зображення мають мати правильні пропорції. */
+    object-fit: contain; 
+}
+
+.carousel-slide .slide-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    color: white;
+    padding: 15px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* Кнопки навігації (решта CSS без змін) */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(44, 62, 80, 0.8);
+    color: white;
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.carousel-btn:hover {
+    background: rgba(44, 62, 80, 1);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-btn.prev {
+    left: 15px;
+}
+
+.carousel-btn.next {
+    right: 15px;
+}
+
+/* Індикатори */
+.carousel-indicators {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #bdc3c7;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.indicator.active {
+    background: #2c3e50;
+    width: 30px;
+    border-radius: 6px;
+}
+
+.indicator:hover {
+    background: #7f8c8d;
+}
