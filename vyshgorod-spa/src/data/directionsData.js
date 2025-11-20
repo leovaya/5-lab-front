@@ -1,4 +1,4 @@
-// src/data/directionsData.js
+
 
 export const directions = [
   // Економічний розвиток (з napryamy.html)

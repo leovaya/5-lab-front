@@ -132,13 +132,13 @@ main {
   padding-top: 120px; 
   width: 100%;
   max-width: 1200px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 30px;
+  margin: 0 auto;
 }
-
+article, aside {
+    width: 90%;
+    box-sizing: border-box;
+}
 /* -----------Блок "Про нас" */
 #about {
   width: 100%;

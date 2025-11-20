@@ -12,9 +12,7 @@ const dropdownItems = [
 ];
 
 function Header() {
-  // Стан для мобільного меню (заміна menu.js)
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  // Стан для випадаючого меню (заміна dropdown.js)
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleMenu = () => {
@@ -24,7 +22,7 @@ function Header() {
   // Функція для закриття меню після кліку на посилання
   const handleLinkClick = () => {
     setIsMenuOpen(false); // Закриваємо мобільне меню
-    setIsDropdownOpen(false); // Закриваємо випадаюче меню
+    setIsDropdownOpen(false); 
   };
 
   return (
@@ -38,20 +36,15 @@ function Header() {
             Вишгородська районна державна адміністрація
           </h1>
 
-          {/* Кнопка "Гамбургер" для мобільного меню */}
           <button className="menu-toggle" id="menuToggle" onClick={toggleMenu}>
             ☰
           </button>
-
-          {/* Додаємо клас 'active' для мобільного меню (логіка з menu.js) */}
           <nav className={`header__nav ${isMenuOpen ? 'active' : ''}`} id="navMenu">
             
             {/* Головна сторінка */}
             <Link to="/" className="header__link" onClick={handleLinkClick}>
               Головна
             </Link>
-
-            {/* Напрями діяльності з випадаючим меню (заміна dropdown.js) */}
             <div 
                 className={`dropdown-container ${isDropdownOpen ? 'show' : ''}`}
                 onMouseEnter={() => setIsDropdownOpen(true)}
@@ -61,7 +54,6 @@ function Header() {
                     to="/napryamy" 
                     className="header__link" 
                     onClick={(e) => { 
-                        // Запобігаємо переходу, щоб відкрити/закрити випадаюче меню на клік
                         e.preventDefault(); 
                         setIsDropdownOpen(!isDropdownOpen);
                         setIsMenuOpen(false); // Закриваємо мобільне меню при відкритті дропдауну
@@ -77,7 +69,7 @@ function Header() {
                             key={index} 
                             to={item.to} 
                             className="dropdown-item" 
-                            onClick={handleLinkClick} // Закриваємо обидва меню при переході
+                            onClick={handleLinkClick} 
                         >
                             {item.text}
                         </Link>
@@ -85,7 +77,6 @@ function Header() {
                 </div>
             </div>
             
-            {/* Зворотній зв'язок */}
             <Link to="/feedback" className="header__link" onClick={handleLinkClick}>
               Зворотній зв'язок
             </Link>

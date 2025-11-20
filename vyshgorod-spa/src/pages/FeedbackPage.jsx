@@ -4,19 +4,19 @@ import '../styles/search.css';
 import '../styles/carousel.css';
 function FeedbackPage() {
   
-  // Стан для відображення підказки (заміна tooltip.js)
+  // Стан для відображення підказки 
   const [isTooltipVisible, setIsTooltipVisible] = useState(false);
   const [tooltipPosition, setTooltipPosition] = useState({ top: 0, left: 0 });
 
 
   // Функція для обробки відправки форми
   const handleSubmit = (e) => {
-    e.preventDefault(); // Зупиняє перезавантаження сторінки
+    e.preventDefault(); 
     console.log("Форма відправлена.");
     alert("Дякуємо! Ваше повідомлення відправлено."); 
   };
   
-  // Обробка події наведення миші (заміна tooltip.js: mouseover)
+  // Обробка події наведення миші
   const handleMouseOver = (e) => {
     const rect = e.target.getBoundingClientRect();
     setTooltipPosition({
@@ -26,7 +26,7 @@ function FeedbackPage() {
     setIsTooltipVisible(true);
   };
 
-  // Обробка події відведення миші (заміна tooltip.js: mouseout)
+  // Обробка події відведення миші 
   const handleMouseOut = () => {
     setIsTooltipVisible(false);
   };
@@ -38,7 +38,6 @@ function FeedbackPage() {
       <Link to="/" className="a_link">← На головну сторінку</Link>
 
       <h3>Форма зворотнього зв’язку</h3>
-      {/* class->className, for->htmlFor, onSubmit={функція} */}
       <form onSubmit={handleSubmit} className="form-container">
         
         <fieldset className="form-fieldset">
@@ -77,9 +76,9 @@ function FeedbackPage() {
             rows="2" 
             maxLength="500" 
             placeholder="Введіть повідомлення (до 500 символів)..." 
-            className={`form-textarea ${isTooltipVisible ? 'field-hover' : ''}`} // Додаємо клас hover
-            onMouseOver={handleMouseOver} // Обробник наведення
-            onMouseOut={handleMouseOut} // Обробник відведення
+            className={`form-textarea ${isTooltipVisible ? 'field-hover' : ''}`} 
+            onMouseOver={handleMouseOver}
+            onMouseOut={handleMouseOut} 
         ></textarea>
 
         <div className="form-checkbox">
@@ -93,7 +92,6 @@ function FeedbackPage() {
         </div>
       </form>
       
-      {/* Підказка (Tooltip) - заміна tooltip.js */}
       {isTooltipVisible && (
         <div 
           className="tooltip tooltip-visible" 

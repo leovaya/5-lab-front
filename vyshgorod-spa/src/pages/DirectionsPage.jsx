@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react'; // Додано useEffect
-// ВИПРАВЛЕНО: Явно вказано розширення .jsx
 import DirectionCard from '../components/DirectionCard.jsx';
-// ВИПРАВЛЕНО: Явно вказано розширення .js
 import { directions } from '../data/directionsData.js';
 import { Link } from 'react-router-dom';
 
@@ -23,23 +21,23 @@ function DirectionsPage() {
 
   // ============== ЛОГІКА КАРУСЕЛІ ==============
   
-  // 1. Хук для автоматичного перемикання слайдів
+
   useEffect(() => {
-    // Встановлюємо інтервал для зміни слайда кожні 5000 мс (5 секунд)
+    // Встановлюємо інтервал для зміни слайда 
     const interval = setInterval(() => {
       setCurrentSlide(prevSlide => 
-        (prevSlide + 1) % totalSlides // Забезпечує циклічність
+        (prevSlide + 1) % totalSlides 
       );
     }, 5000); 
 
-    // Функція очищення: викликається, коли компонент демонтується або залежності змінюються
+  
     return () => clearInterval(interval);
   }, [totalSlides]); 
 
   // 2. Обробка переходу на кнопку
   const moveSlide = (direction) => {
       let newSlide = currentSlide + direction;
-      // Логіка циклічності
+    
       if (newSlide >= totalSlides) {
           newSlide = 0;
       } else if (newSlide < 0) {
@@ -50,14 +48,11 @@ function DirectionsPage() {
   
   // Стиль для зсуву каруселі
   const wrapperStyle = {
-      // Формула для зсуву: - (індекс * 100)% / кількість слайдів
       transform: `translateX(${-currentSlide * (100 / totalSlides)}%)`, 
       transition: 'transform 0.5s ease-in-out',
       display: 'flex',
-      // width: 600% (або 100% * к-сть слайдів) - задається в CSS для більшої надійності
   };
-  // ==================================================================
-  
+
   // ============== ЛОГІКА ПОШУКУ (ЗАМІНА search.js) ==============
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
@@ -80,7 +75,6 @@ function DirectionsPage() {
       <div className="carousel-container">
           <button className="carousel-btn prev" onClick={() => moveSlide(-1)}>‹</button>
           
-          {/* carousel-wrapper та style */}
           <div className="carousel-wrapper" id="carouselWrapper" style={wrapperStyle}>
               {carouselSlides.map((slide, index) => (
                   <div key={index} className="carousel-slide">

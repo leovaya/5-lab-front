@@ -2,11 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 function HomePage() {
-  // Контент з index.html
+
   return (
     <main>
       <header className="header_internal">
-          {/* Секція кнопок з index.html */}
           <div>
             <Link to="/cabinet"><button>Перейти у власний кабінет</button></Link>
             <Link to="/register"><button>Зареєструватись</button></Link>
@@ -16,7 +15,6 @@ function HomePage() {
       <aside> 
           <h2>Навігація: </h2> 
           <ul> 
-              {/* Пояснення: внутрішні якірні посилання залишаємо, але зовнішні переходи через Link */}
               <li><a href="#about" className="a_link">Про нас</a></li> 
               <li><a href="#leaders" className="a_link">Керівництво</a></li> 
               <li><Link to="/napryamy" className="a_link">Напрями діяльності</Link></li>
@@ -26,14 +24,12 @@ function HomePage() {
 
       <article id="about">
         <h2>Мета створення установи</h2>
-        {/* Обов'язково закриваємо тег <img> */}
          <img src="img/vishgorodskiy_rayon-removebg-preview.png" alt="Будівля адміністрації" className="about-img" />
         <p>
             Районна адміністрація — це <span style={{color:'red'}}><i><b><u><em>важливий орган місцевої влади</em></u></b></i></span>,
             який відповідає за реалізацію державної політики у районі.
         </p>
         <p>Завдання адміністрації:</p>
-        {/* В JSX атрибут start пишеться як start (без лапок) */}
         <ol start="7"> 
             <li>Забезпечення виконання законодавства України.</li>
             <li>Розвиток соціальної та економічної сфери району.</li>
@@ -47,7 +43,6 @@ function HomePage() {
           <caption className="leaders__caption"><b>Інформація про керівників</b></caption>
           <thead className="leaders__thead">
             <tr>
-              {/* ВИПРАВЛЕННЯ: Прибрані зайві переноси рядків та пробіли між <th> */}
               <th>Прізвище та ініціали</th><th>Посада</th><th>Досвід</th><th colSpan="2">Освіта</th>
             </tr>
           </thead>
@@ -101,9 +96,7 @@ function HomePage() {
         <nav>
           <ul>
             <li><Link to="/napryamy" className="a_link">Напрями діяльності</Link></li>
-            {/* Посилання на Зворотній зв'язок з index.html було zvorotnyi.html, змінюємо на коректний SPA-шлях */}
             <li><Link to="/feedback" className="a_link">Зворотній зв’язок</Link></li> 
-            {/* Зовнішні посилання залишаються <a> */}
             <li><a href="https://www.kmu.gov.ua" target="_blank" className="a_link">Кабінет Міністрів України</a></li>
             <li><a href="https://rada.gov.ua" target="_blank" className="a_link">Верховна Рада України</a></li>
           </ul>
